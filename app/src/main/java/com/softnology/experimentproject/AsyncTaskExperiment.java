@@ -80,8 +80,8 @@ public class AsyncTaskExperiment extends AppCompatActivity {
 
                 toast = Toast.makeText(context, "", duration);
                 toastText.setText(charSequence.get(2));
-                toast.setView(linearLayout);
                 toast.setGravity(Gravity.CENTER | Gravity.START, 0, 600);
+                toast.setView(linearLayout);
                 toast.show();
 
                 toast = Toast.makeText(context, charSequence.get(3), duration);
@@ -89,9 +89,9 @@ public class AsyncTaskExperiment extends AppCompatActivity {
                 toast.show();
 
                 toast = Toast.makeText(context, "", duration);
-                toast.setView(linearLayout);
                 toastText.setText(charSequence.get(4));
                 toast.setGravity(Gravity.TOP | Gravity.START, 500, 300);
+                toast.setView(linearLayout);
                 toast.show();
 
 
@@ -201,14 +201,14 @@ public class AsyncTaskExperiment extends AppCompatActivity {
             if (this._Bar != null) {
                 // Converting
                 valueCalcu = ((float) values[0] / (float) milToSec) * 100;
-                textViewProgress.get().setText(valueCalcu + "%");
+                textViewProgress.get().setText(String.format("%s%%", valueCalcu));
                 _Bar.get().setProgress(values[0]);
             }
         }
 
         protected void onPostExecute(String result) {
             mTextView.get().setText(result);
-            textViewProgress.get().setText("Task " + valueCalcu + "%" + " Completed");
+            textViewProgress.get().setText(String.format("Task %s%% Completed", valueCalcu));
         }
 
 
