@@ -13,6 +13,7 @@
      android:layout_height="wrap_content"
      android:layout_marginTop="8dp"
      android:text="@string/i_am_ready_to_start_work"
+     android:drawableEnd="@drawable/ic_ready"
      android:textColor="#303F9F"
      android:textSize="24sp"
      app:layout_constraintEnd_toEndOf="parent"

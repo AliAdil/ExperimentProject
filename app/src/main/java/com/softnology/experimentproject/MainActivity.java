@@ -1,11 +1,8 @@
 package com.softnology.experimentproject;
 
-import android.app.LoaderManager;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.content.Intent;
-import android.content.Loader;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -23,6 +20,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
     private Animation fadeOut;
     private TextView textViewAsyncTask;
@@ -34,19 +33,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textViewAsyncTask = findViewById(R.id.TextView_AsyncTask);
-
-
-        getLoaderManager().initLoader(1, null, new MyLoaderCallBack());
-
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        /* getLoaderManager().initLoader(1, null, new MyLoaderCallBack());*/
         Animation fadeIn = new AlphaAnimation(0, 1);
         fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
-        fadeIn.setDuration(1000);
-
+        fadeIn.setDuration(3000);
         fadeOut = new AlphaAnimation(1, 0);
         fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
-        fadeOut.setStartOffset(1000);
+        fadeOut.setStartOffset(0);
         fadeOut.setDuration(1000);
-
         AnimationSet animation = new AnimationSet(false); //change to false
         animation.addAnimation(fadeIn);
         textViewAsyncTask.setAnimation(animation);
@@ -65,7 +60,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
+    // Finishing activity on Toolbar back button press
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
     /*  Activity Life Cycle State*/
 
     @Override
@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
         //Snack Bar work
         mySnackBar = Snackbar.make(findViewById(R.id.myCoordinatorLayout), "Hey there! welcome to Garage of experimentation Reporting from " + activityState, Snackbar.LENGTH_SHORT);
         mySnackBar.setAction("click me!", new snackBarClickListener());
+        mySnackBar.setDuration(3000);
         mySnackBar.show();
         mySnackBar.addCallback(new Snackbar.Callback() {
             @Override
@@ -135,7 +136,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private static class MyLoader extends AsyncTaskLoader {
+    //Snack bar click listener
+    public class snackBarClickListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getApplicationContext(), AsyncTaskExperiment.class);
+            startActivity(intent);
+        }
+    }
+
+    /*private static class MyLoader extends AsyncTaskLoader {
 
         MyLoader(@NonNull Context context) {
             super(context);
@@ -146,9 +157,8 @@ public class MainActivity extends AppCompatActivity {
         public Object loadInBackground() {
             return null;
         }
-    }
-
-    //Async Task
+    }*/
+  /*  //Async Task
     private class MyTask extends AsyncTask<String, Void, String> {
 
         @Override
@@ -168,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //Async Loader
+       //Async Loader
     private class MyLoaderCallBack implements LoaderManager.LoaderCallbacks {
 
         @Override
@@ -185,17 +195,7 @@ public class MainActivity extends AppCompatActivity {
         public void onLoaderReset(Loader loader) {
 
         }
-    }
-
-    //Snack bar click listener
-    public class snackBarClickListener implements View.OnClickListener {
-
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getApplicationContext(), AsyncTaskExperiment.class);
-            startActivity(intent);
-        }
-    }
+    }*/
 
 
 }

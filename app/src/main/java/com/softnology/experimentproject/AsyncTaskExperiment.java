@@ -19,6 +19,7 @@ import org.w3c.dom.Text;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 public class AsyncTaskExperiment extends AppCompatActivity {
@@ -40,6 +41,7 @@ public class AsyncTaskExperiment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_async_task);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         mTextView = findViewById(R.id.textView1);
         textViewProgress = findViewById(R.id.TextView_Progress);
         progressBar = findViewById(R.id.Progressbar);
@@ -115,6 +117,7 @@ public class AsyncTaskExperiment extends AppCompatActivity {
     // Method is attached with start task button to start async task
     public void startTask(View view) {
         mTextView.setText(R.string.napping);
+        mTextView.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_sleeping,0);
         count = 1;
         Random r = new Random();
         int multiple = 1000;
@@ -137,6 +140,7 @@ public class AsyncTaskExperiment extends AppCompatActivity {
            simpleAsyncTask.cancel(true);
 
            mTextView.setText(R.string.i_am_ready_to_start_work);
+           mTextView.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_ready,0);
            textViewProgress.setText(R.string.startTask);
            progressBar.setMax(0);
        }
@@ -208,10 +212,18 @@ public class AsyncTaskExperiment extends AppCompatActivity {
 
         protected void onPostExecute(String result) {
             mTextView.get().setText(result);
+            mTextView.get().setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_done,0);
             textViewProgress.get().setText(String.format("Task %s%% Completed", valueCalcu));
         }
 
 
+    }
+
+// Finishing activity on Toolbar back button press
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 
 

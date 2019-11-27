@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">ExperimentProject</string>
+    <string name="app_name">Android Development Garage</string>
     <string name="i_am_ready_to_start_work">I am ready to start work!</string>
     <string name="start_task">Start Task</string>
-    <string name="napping">zzzZZZzzzzNapping...</string>
+    <string name="napping">Napping… ZzzzZzzz</string>
     <string name="progress">Progress</string>
     <string name="task_starting">Task is starting</string>
     <string name="show_toast">Show Toast</string>

@@ -4,6 +4,7 @@
     android:id="@+id/myCoordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_garage"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,6 +18,9 @@
             android:background="@drawable/rounded_corners"
             android:padding="16dp"
             android:text="@string/hello_world_click_me_to_explore_experimentation"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
