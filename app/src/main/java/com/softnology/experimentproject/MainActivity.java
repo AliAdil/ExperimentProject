@@ -1,9 +1,6 @@
 package com.softnology.experimentproject;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.app.LoaderManager;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
@@ -19,16 +16,25 @@ import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.snackbar.Snackbar;
+
 public class MainActivity extends AppCompatActivity {
-    private  Animation fadeOut;
-    private  TextView textViewAsyncTask;
+    private Animation fadeOut;
+    private TextView textViewAsyncTask;
+    private Snackbar mySnackBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textViewAsyncTask = findViewById(R.id.TextView_AsyncTask);
 
-        getLoaderManager().initLoader(1,null,new MyLoaderCallBack());
+
+        getLoaderManager().initLoader(1, null, new MyLoaderCallBack());
 
         Animation fadeIn = new AlphaAnimation(0, 1);
         fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
@@ -53,11 +59,65 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
 
+  /*  Activity Life Cycle State*/
+
+    @Override
+    protected void onStart() {
+        setMySnackBar("onStart");
+        super.onStart();
+    }
+
+    @Override
+    protected void onRestart() {
+        setMySnackBar("onRestart");
+        super.onRestart();
+    }
+
+    @Override
+    protected void onResume() {
+        setMySnackBar("onResume");
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        setMySnackBar("onPause");
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        setMySnackBar("onStop");
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        setMySnackBar("onDestroy");
+        super.onDestroy();
+    }
+    /*  End of Activity Life Cycle State Methods*/
+
+
+    private static class MyLoader extends AsyncTaskLoader {
+
+        MyLoader(@NonNull Context context) {
+            super(context);
+        }
+
+        @Nullable
+        @Override
+        public Object loadInBackground() {
+            return null;
+        }
+    }
 
     //Async Task
-    private class MyTask extends AsyncTask <String , Void , String>{
+    private class MyTask extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... strings) {
@@ -67,15 +127,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         protected void onProgressUpdate(Integer... integers) {
-        // receive progress updates from doInBackground
+            // receive progress updates from doInBackground
         }
 
         @Override
-        protected void onPostExecute(String result){
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
         }
     }
-
 
     //Async Loader
     private class MyLoaderCallBack implements LoaderManager.LoaderCallbacks {
@@ -96,20 +155,24 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private static class MyLoader extends AsyncTaskLoader {
 
-        MyLoader(@NonNull Context context) {
-            super(context);
-        }
+    //Snack bar
+    public void setMySnackBar (String activityState){
+        //Snack Bar work
+        mySnackBar = Snackbar.make(findViewById(R.id.myCoordinatorLayout), "Hey there! welcome to Garage of experimentation Reporting from "+activityState, Snackbar.LENGTH_SHORT);
+        mySnackBar.setAction("click me!",new snackBarClickListener());
+        mySnackBar.show();
+    }
 
-        @Nullable
+    //Snack bar click listener
+    public class snackBarClickListener implements View.OnClickListener {
+
         @Override
-        public Object loadInBackground() {
-            return null;
+        public void onClick(View v) {
+            Intent intent = new Intent(getApplicationContext(),AsyncTaskExperiment.class);
+            startActivity(intent);
         }
     }
 
-    public void animation(){
 
-    }
 }
