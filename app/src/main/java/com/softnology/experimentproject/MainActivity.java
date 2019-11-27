@@ -1,6 +1,5 @@
 package com.softnology.experimentproject;
 
-import android.app.Activity;
 import android.app.LoaderManager;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
@@ -8,6 +7,7 @@ import android.content.Intent;
 import android.content.Loader;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
@@ -15,6 +15,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private Animation fadeOut;
     private TextView textViewAsyncTask;
     private Snackbar mySnackBar;
+    private Toast toast = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +61,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        setMySnackBar("onCreate");
 
 
     }
 
-  /*  Activity Life Cycle State*/
+    /*  Activity Life Cycle State*/
 
     @Override
     protected void onStart() {
@@ -102,6 +105,35 @@ public class MainActivity extends AppCompatActivity {
     }
     /*  End of Activity Life Cycle State Methods*/
 
+    //Snack bar
+    public void setMySnackBar(final String activityState) {
+        //Snack Bar work
+        mySnackBar = Snackbar.make(findViewById(R.id.myCoordinatorLayout), "Hey there! welcome to Garage of experimentation Reporting from " + activityState, Snackbar.LENGTH_SHORT);
+        mySnackBar.setAction("click me!", new snackBarClickListener());
+        mySnackBar.show();
+        mySnackBar.addCallback(new Snackbar.Callback() {
+            @Override
+            public void onShown(Snackbar snackbar) {
+                toast = Toast.makeText(getApplicationContext(), "SnackBar Showed " + activityState, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.TOP | Gravity.END, 0, 200);
+                toast.show();
+            }
+
+            @Override
+            public void onDismissed(Snackbar snackbar, int event) {
+                //see Snackbar.Callback docs for event details
+                if (event == Snackbar.Callback.DISMISS_EVENT_TIMEOUT) {
+                    // Snackbar closed on its own
+                    toast = Toast.makeText(getApplicationContext(), "SnackBar Dismissed " + activityState, Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP | Gravity.START, 0, 200);
+                    toast.show();
+                }
+            }
+
+
+        });
+
+    }
 
     private static class MyLoader extends AsyncTaskLoader {
 
@@ -155,21 +187,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-    //Snack bar
-    public void setMySnackBar (String activityState){
-        //Snack Bar work
-        mySnackBar = Snackbar.make(findViewById(R.id.myCoordinatorLayout), "Hey there! welcome to Garage of experimentation Reporting from "+activityState, Snackbar.LENGTH_SHORT);
-        mySnackBar.setAction("click me!",new snackBarClickListener());
-        mySnackBar.show();
-    }
-
     //Snack bar click listener
     public class snackBarClickListener implements View.OnClickListener {
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(getApplicationContext(),AsyncTaskExperiment.class);
+            Intent intent = new Intent(getApplicationContext(), AsyncTaskExperiment.class);
             startActivity(intent);
         }
     }
