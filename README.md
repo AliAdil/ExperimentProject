@@ -8,4 +8,5 @@
 1) Dynamic Progress bar
 2) Async Task
 3) Custom Toasts
+4) Snackbar
 
