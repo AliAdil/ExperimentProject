@@ -6,4 +6,9 @@
     <string name="progress">Progress</string>
     <string name="task_starting">Task is starting</string>
     <string name="show_toast">Show Toast</string>
+    <string name="android_icon">android icon</string>
+    <string name="custom_toast_text">This is my custom toast</string>
+    <string name="hello_world_click_me_to_explore_experimentation">Hello World! Click Me to explore experimentation</string>
+    <string name="end_task">End Task</string>
+    <string name="startTask">Press Start Task to Start Task :D</string>
 </resources>

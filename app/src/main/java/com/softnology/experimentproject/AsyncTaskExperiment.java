@@ -4,7 +4,9 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -12,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.w3c.dom.Text;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -23,11 +27,14 @@ public class AsyncTaskExperiment extends AppCompatActivity {
     Integer count = 1;
     private TextView mTextView = null;
     private TextView textViewProgress = null;
+    private TextView toastText;
     private ProgressBar progressBar;
     private Toast toast;
     private Context context;
     private int duration;
     private ArrayList<CharSequence> charSequence;
+    private  SimpleAsyncTask simpleAsyncTask;
+    private View linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,12 @@ public class AsyncTaskExperiment extends AppCompatActivity {
         progressBar = findViewById(R.id.Progressbar);
         Button showToast = findViewById(R.id.btn_showToast);
         progressBar.setProgress(0);
+
+        // Inflating view
+        LayoutInflater inflater = getLayoutInflater();
+        linearLayout = inflater.inflate(R.layout.custom_toast_layout,(ViewGroup)findViewById(R.id.custom_toast_container));
+        toastText = linearLayout.findViewById(R.id.text);
+        toastText.setText(R.string.custom_toast_text);
 
         //Application context
         context = getApplicationContext();
@@ -55,15 +68,19 @@ public class AsyncTaskExperiment extends AppCompatActivity {
         showToast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toast = Toast.makeText(context, charSequence.get(0), duration);
+                toast = Toast.makeText(context,"", duration);
+                toastText.setText(charSequence.get(0));
                 toast.setGravity(Gravity.TOP | Gravity.START, 0, 0);
+                toast.setView(linearLayout);
                 toast.show();
 
                 toast = Toast.makeText(context, charSequence.get(1), duration);
                 toast.setGravity(Gravity.BOTTOM | Gravity.END, 0, 0);
                 toast.show();
 
-                toast = Toast.makeText(context, charSequence.get(2), duration);
+                toast = Toast.makeText(context, "", duration);
+                toastText.setText(charSequence.get(2));
+                toast.setView(linearLayout);
                 toast.setGravity(Gravity.CENTER | Gravity.START, 0, 600);
                 toast.show();
 
@@ -71,7 +88,9 @@ public class AsyncTaskExperiment extends AppCompatActivity {
                 toast.setGravity(Gravity.CENTER | Gravity.START, 100, -100);
                 toast.show();
 
-                toast = Toast.makeText(context, charSequence.get(4), duration);
+                toast = Toast.makeText(context, "", duration);
+                toast.setView(linearLayout);
+                toastText.setText(charSequence.get(4));
                 toast.setGravity(Gravity.TOP | Gravity.START, 500, 300);
                 toast.show();
 
@@ -106,8 +125,29 @@ public class AsyncTaskExperiment extends AppCompatActivity {
         // set progress max to total seconds
         progressBar.setMax(milToSec);
         // executing async task
-        new SimpleAsyncTask(mTextView, textViewProgress, progressBar, AsyncTaskExperiment.this).execute(miliSec);
+        simpleAsyncTask = new SimpleAsyncTask(mTextView, textViewProgress, progressBar, AsyncTaskExperiment.this);
+        simpleAsyncTask.execute(miliSec);
 
+    }
+
+    // Ending Async Task
+    public void EndTask(View view) {
+       try {
+           if(simpleAsyncTask != null)
+           simpleAsyncTask.cancel(true);
+
+           mTextView.setText(R.string.i_am_ready_to_start_work);
+           textViewProgress.setText(R.string.startTask);
+           progressBar.setMax(0);
+       }
+       catch (Exception e){
+           toast = Toast.makeText(context, "", duration);
+           toastText.setText(e.toString());
+           toast.setView(linearLayout);
+           toast.setGravity(Gravity.CENTER , 0, 0);
+           toast.show();
+
+       }
 
     }
 
