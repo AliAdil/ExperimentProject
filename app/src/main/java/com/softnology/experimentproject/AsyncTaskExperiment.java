@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -25,6 +28,10 @@ public class AsyncTaskExperiment extends AppCompatActivity {
     private TextView textViewProgress = null;
     private ProgressBar progressBar;
     Integer count =1;
+    private Toast toast, toast2,toast3,toast4,toast5;
+    private Context context;
+    private  int duration;
+    private ArrayList<CharSequence> charSequence;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +40,44 @@ public class AsyncTaskExperiment extends AppCompatActivity {
         mTextView = findViewById(R.id.textView1);
         textViewProgress = findViewById(R.id.TextView_Progress);
         progressBar = (ProgressBar) findViewById(R.id.Progressbar);
+        Button showToast =  findViewById(R.id.btn_showToast);
         progressBar.setProgress(0);
+        context = getApplicationContext();
+        charSequence = new ArrayList<>();
+        for (int i = 0 ; i < 5 ; i ++){
+            charSequence.add("This is my Toast Test #"+(i+1));
+        }
+
+        duration = Toast.LENGTH_SHORT;
+
+        showToast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toast = Toast.makeText(context,charSequence.get(0),duration);
+                toast.setGravity(Gravity.TOP|Gravity.START,0,0);
+                toast.show();
+
+                toast2 = Toast.makeText(context,charSequence.get(1),duration) ;
+                toast2.setGravity(Gravity.BOTTOM|Gravity.END,0,0);
+                toast2.show();
+
+                toast3 = Toast.makeText(context,charSequence.get(2),duration) ;
+                toast3.setGravity(Gravity.CENTER|Gravity.START,0,600);
+                toast3.show();
+
+                toast4 = Toast.makeText(context,charSequence.get(3),duration) ;
+                toast4.setGravity(Gravity.CENTER|Gravity.START,100,-100);
+                toast4.show();
+
+                toast4 = Toast.makeText(context,charSequence.get(4),duration) ;
+                toast4.setGravity(Gravity.TOP|Gravity.START,500,300);
+                toast4.show();
+
+
+            }
+        });
+
+
 
 
         if (savedInstanceState != null) {
@@ -48,6 +92,7 @@ public class AsyncTaskExperiment extends AppCompatActivity {
     }
 
     public void startTask(View view) {
+
         mTextView.setText(R.string.napping);
         count =1;
         Random r = new Random();
