@@ -9,7 +9,7 @@
         android:roundIcon="@drawable/ic_andorid"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-      >
+        android:fullBackupContent="">
         <activity android:name=".MainActivity">
             <tools:validation testUrl="https://aliadilstudio.com/" />
 
