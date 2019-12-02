@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">Android Development Garage</string>
-    <string name="i_am_ready_to_start_work">I am ready to start work!</string>
-    <string name="start_task">Start Task</string>
-    <string name="napping">Napping… ZzzzZzzz</string>
-    <string name="progress">Progress</string>
-    <string name="task_starting">Task is starting</string>
-    <string name="show_toast">Show Toast</string>
-    <string name="android_icon">android icon</string>
-    <string name="custom_toast_text">This is my custom toast</string>
-    <string name="hello_world_click_me_to_explore_experimentation">Hello World! Click Me to explore experimentation</string>
-    <string name="end_task">End Task</string>
-    <string name="startTask">Press Start Task to Start Task :D</string>
+    <string name="i_am_ready_to_start_work" translatable="false">I am ready to start work!</string>
+    <string name="start_task" translatable="false">Start Task</string>
+    <string name="napping" translatable="false">Napping… ZzzzZzzz</string>
+    <string name="progress" translatable="false">Progress</string>
+    <string name="task_starting" translatable="false">Task is starting</string>
+    <string name="show_toast" translatable="false">Show Toast</string>
+    <string name="android_icon" translatable="false">android icon</string>
+    <string name="custom_toast_text" translatable="false">This is my custom toast\n</string>
+    <string name="hello_world_click_me_to_explore_experimentation" translatable="false">Hello World! Click Me to explore experimentation</string>
+    <string name="end_task" translatable="false">End Task</string>
+    <string name="startTask" translatable="false">Press Start Task to Start Task :D</string>
 </resources>
