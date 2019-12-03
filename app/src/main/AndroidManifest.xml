@@ -9,7 +9,6 @@
         android:roundIcon="@drawable/ic_andorid"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:fullBackupContent=""
         android:allowBackup="true"
        >
         <activity android:name=".MainActivity">

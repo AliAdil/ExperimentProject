@@ -3,6 +3,8 @@ package com.softnology.experimentproject;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -11,12 +13,14 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.print.PrintHelper;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -33,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textViewAsyncTask = findViewById(R.id.TextView_AsyncTask);
+        Button btnPrint = findViewById(R.id.btn_print);
+        Button btnEmail = findViewById(R.id.btn_email);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         /* getLoaderManager().initLoader(1, null, new MyLoaderCallBack());*/
         Animation fadeIn = new AlphaAnimation(0, 1);
@@ -58,6 +64,19 @@ public class MainActivity extends AppCompatActivity {
         });
         setMySnackBar("onCreate");
 
+        btnPrint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doBitmapPrint();
+            }
+        });
+
+        btnEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendEmailReceipt();
+            }
+        });
 
     }
     // Finishing activity on Toolbar back button press
@@ -143,6 +162,26 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent intent = new Intent(getApplicationContext(), AsyncTaskExperiment.class);
             startActivity(intent);
+        }
+    }
+
+    void doBitmapPrint(){
+        PrintHelper bitmapPrinter = new PrintHelper(MainActivity.this);
+        bitmapPrinter.setScaleMode(PrintHelper.SCALE_MODE_FIT);
+        Bitmap bitmapImage = BitmapFactory.decodeResource(getResources(),R.drawable.ic_andorid);
+        bitmapPrinter.printBitmap("Android Logo icon",bitmapImage);
+    }
+
+    void sendEmailReceipt(){
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"recipient@example.com"});
+        i.putExtra(Intent.EXTRA_SUBJECT, "Paysa Donation Receipt");
+        i.putExtra(Intent.EXTRA_TEXT   , "You send ABC gift card to Xyz.");
+        try {
+            startActivity(Intent.createChooser(i, "Send mail..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(MainActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
         }
     }
 
