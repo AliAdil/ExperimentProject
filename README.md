@@ -10,3 +10,6 @@
 3) Custom Toasts
 4) Snackbar
 5) Created Deep Link to App Content
+6) Localization
+7) Print Bitmap
+8) Send Email 
