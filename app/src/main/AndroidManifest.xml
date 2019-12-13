@@ -10,6 +10,7 @@
         android:roundIcon="@drawable/ic_andorid"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SettingsActivity"></activity>
         <activity android:name=".MainActivity">
             <tools:validation testUrl="https://aliadilstudio.com/" />
 
@@ -30,6 +31,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AsyncTaskExperiment" />
+        <activity android:name=".classes.AppCompatPreferenceActivity" />
     </application>
 
 </manifest>
