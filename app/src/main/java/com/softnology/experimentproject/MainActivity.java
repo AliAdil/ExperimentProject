@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         textViewAsyncTask = findViewById(R.id.TextView_AsyncTask);
         Button btnPrint = findViewById(R.id.btn_print);
         Button btnEmail = findViewById(R.id.btn_email);
+        Button btnSettings = findViewById(R.id.btn_settings);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         /* getLoaderManager().initLoader(1, null, new MyLoaderCallBack());*/
         Animation fadeIn = new AlphaAnimation(0, 1);
@@ -75,6 +76,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sendEmailReceipt();
+            }
+        });
+
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
+                startActivity(intent);*/
             }
         });
 

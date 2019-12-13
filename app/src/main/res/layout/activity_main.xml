@@ -46,5 +46,14 @@
             app:layout_constraintStart_toStartOf="@+id/btn_print"
             app:layout_constraintTop_toBottomOf="@+id/btn_print" />
 
+        <Button
+            android:id="@+id/btn_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_activity_settings"
+            app:layout_constraintEnd_toEndOf="@+id/btn_email"
+            app:layout_constraintStart_toStartOf="@+id/btn_email"
+            app:layout_constraintTop_toBottomOf="@+id/btn_email" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

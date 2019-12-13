@@ -11,4 +11,42 @@
     <string name="hello_world_click_me_to_explore_experimentation" translatable="false">Hello World! Click Me to explore experimentation</string>
     <string name="end_task" translatable="false">End Task</string>
     <string name="startTask" translatable="false">Press Start Task to Start Task :D</string>
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="title_activity_settings" translatable="false">Settings</string>
+
+    <string name="pref_title_ringtone" translatable="false">Ringtone</string>
+    <string name="pref_ringtone_silent" translatable="false">Silent</string>
+
+    <string name="default_gallery_storage" translatable="false">My Videos</string>
+    <string name="title_auto_upload" translatable="false">Auto upload</string>
+    <string name="summary_upload_over_wifi" translatable="false">Upload the videos when wifi is available</string>
+    <string name="title_upload_quality" translatable="false">Upload Quality</string>
+    <string name="summary_upload_video_quality" translatable="false">Specify video quality for uploads</string>
+    <string name="pref_title_notifications" translatable="false">Notifications</string>
+    <string name="summary_choose_ringtone" translatable="false">Choose notification sound</string>
+    <string name="pref_header_about" translatable="false">About</string>
+    <string name="summary_about" translatable="false">We are a team of like-minded people, specialized in development of Android App Development creating new trends across the app space. Glad to Help in anyway!</string>
+    <string name="app_version" translatable="false">3.5</string>
+    <string name="summary_support" translatable="false">Got any queries? We are happy to help!</string>
+    <string name="title_send_feedback" translatable="false">Send Feedback</string>
+    <string name="title_faq" translatable="false">FAQ</string>
+    <string name="summary_faq" translatable="false">View frequently asked questions</string>
+    <string name="url_faq" translatable="false">https://www.androidhive.info/privacy-policy/</string>
+    <string name="privacy_policy" translatable="false">Privacy Policy</string>
+    <string name="url_privacy" translatable="false">https://www.androidhive.info/privacy-policy/</string>
+    <string name="title_terms" translatable="false">Terms &amp; Conditions</string>
+    <string name="url_terms" translatable="false">https://www.androidhive.info/terms-of-service/</string>
+    <string name="title_version" translatable="false">Version</string>
+    <string name="choose_email_client" translatable="false">Choose email client</string>
+    <string name="title_gallery_storage" translatable="false">Default Storage</string>
+    <string name="title_new_notification_sound" translatable="false">New message notification</string>
+    <string name="title_vibrate" translatable="false">Vibrate</string>
+    <string name="summary_vibrate" translatable="false">Vibrate on new notification</string>
+    <string name="key_upload_over_wifi" translatable="false">key_upload_over_wifi</string>
+    <string name="key_gallery_name" translatable="false">key_gallery_name</string>
+    <string name="key_upload_quality" translatable="false">key_upload_quality</string>
+    <string name="notifications_new_message" translatable="false">notifications_new_message</string>
+    <string name="key_notifications_new_message_ringtone" translatable="false">key_notifications_new_message_ringtone</string>
+    <string name="key_vibrate" translatable="false">key_vibrate</string>
+    <string name="key_send_feedback" translatable="false">key_send_feedback</string>
 </resources>
