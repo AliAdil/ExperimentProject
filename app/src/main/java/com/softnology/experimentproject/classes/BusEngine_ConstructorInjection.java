@@ -1,6 +1,6 @@
 package com.softnology.experimentproject.classes;
 
-class BusEngine {
+class BusEngine_ConstructorInjection {
     void start(){
 
     }
