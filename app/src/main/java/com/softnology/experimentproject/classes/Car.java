@@ -3,5 +3,20 @@ package com.softnology.experimentproject.classes;
     According to the definition of Dependency inversion principle:
     # High-level modules should not depend on low-level modules. Both should depend on abstractions.
     # Abstractions should not depend upon details. Details should depend upon abstractions.*/
-public class EventLogWriter {
+class Car {
+//his is not an example of dependency injection because the Car class is constructing its own Engine.
+    private Engine engine = new Engine();
+
+    void start(){
+        engine.start();
+    }
+
+
 }
+class MyApp{
+    public static void main(String [] args){
+        Car car = new Car();
+        car.start();
+    }
+}
+
