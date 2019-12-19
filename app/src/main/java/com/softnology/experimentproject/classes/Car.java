@@ -5,6 +5,14 @@ package com.softnology.experimentproject.classes;
     # Abstractions should not depend upon details. Details should depend upon abstractions.*/
 class Car {
 //his is not an example of dependency injection because the Car class is constructing its own Engine.
+
+/*
+    https://developer.android.com/training/dependency-injection#automated-di
+    Automated dependency injection
+    Reflection-based solutions that connect dependencies at runtime.
+    Static solutions that generate the code to connect dependencies at compile time.
+*/
+
     private Engine engine = new Engine();
 
     void start(){
