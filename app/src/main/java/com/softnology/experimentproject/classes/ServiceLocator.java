@@ -9,8 +9,7 @@ class ServiceLocator {
 Its overall purpose is to only allow one thread at a time into a particular section of
 code thus allowing us to protect, for example, variables or data from being corrupted
 by simultaneous modifications from different threads*/
-
-    static ServiceLocator getInstance() {
+static ServiceLocator getInstance() {
         if (instance == null) {
             synchronized (ServiceLocator.class) {
                 instance = new ServiceLocator();
@@ -23,3 +22,6 @@ by simultaneous modifications from different threads*/
         return  new Engine_ServiceLocator();
     }
 }
+
+
+
