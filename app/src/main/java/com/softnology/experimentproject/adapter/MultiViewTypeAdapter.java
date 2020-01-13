@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -21,7 +22,7 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter {
     Context mContext;
     int total_types;
 
-    public MultiViewTypeAdapter(ArrayList<MultiViewModel> data, Context context) {
+    public MultiViewTypeAdapter(Context context,ArrayList<MultiViewModel> data) {
         this.dataSet = data;
         this.mContext = context;
         total_types = dataSet.size();
@@ -48,10 +49,10 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter {
             case MultiViewModel.TYPE_BANNER:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.banner_image, parent, false);
                 final ViewGroup.LayoutParams lp = view.getLayoutParams();
-                if (lp instanceof StaggeredGridLayoutManager.LayoutParams) {
-                    StaggeredGridLayoutManager.LayoutParams sglp =
-                            (StaggeredGridLayoutManager.LayoutParams) lp;
-                    sglp.setFullSpan(true);
+                if (lp instanceof GridLayoutManager.LayoutParams) {
+                    GridLayoutManager.LayoutParams sglp =
+                            (GridLayoutManager.LayoutParams) lp;
+                   /* sglp.setFullSpan(true);*/
                 }
 
                 return new BannerTypeViewHolder(view);
