@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="53dp"
+            android:layout_height="53dp"
+            android:src="@drawable/sun"
+            android:layout_centerHorizontal="true"
+            android:clickable="false"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:text="The Sun"
+            android:singleLine="false"
+            android:layout_marginTop="5dp"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+    </RelativeLayout>

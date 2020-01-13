@@ -27,6 +27,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.print.PrintHelper;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.softnology.experimentproject.classes.GridView;
 
 import java.util.Objects;
 
@@ -79,7 +80,9 @@ public class MainActivity extends AppCompatActivity {
         btnEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendEmailReceipt();
+              /*  sendEmailReceipt();*/
+                Intent intent = new Intent(MainActivity.this, GridView.class);
+                startActivity(intent);
             }
         });
 
@@ -211,6 +214,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (android.content.ActivityNotFoundException ex) {
             Toast.makeText(MainActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
         }
+
+
     }
 
     /*private static class MyLoader extends AsyncTaskLoader {
