@@ -13,16 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.softnology.experimentproject.R;
-import com.softnology.experimentproject.model.MultiViewModel;
+import com.softnology.experimentproject.model.HomeGridModel;
+
 
 import java.util.ArrayList;
 
-public class MultiViewTypeAdapter extends RecyclerView.Adapter {
-    private ArrayList<MultiViewModel> dataSet;
+public class HomeGridViewAdapter extends RecyclerView.Adapter {
+    private ArrayList<HomeGridModel> dataSet;
     Context mContext;
     int total_types;
 
-    public MultiViewTypeAdapter(Context context,ArrayList<MultiViewModel> data) {
+    public HomeGridViewAdapter(Context context, ArrayList<HomeGridModel> data) {
         this.dataSet = data;
         this.mContext = context;
         total_types = dataSet.size();
@@ -33,9 +34,9 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter {
 
         switch (dataSet.get(position).type) {
             case 0:
-                return MultiViewModel.TYPE_BANNER;
+                return HomeGridModel.TYPE_BANNER;
             case 1:
-                return MultiViewModel.TYPE_IMAGE_WITH_TEXT;
+                return HomeGridModel.TYPE_IMAGE_WITH_TEXT;
 
         }
         return 0;
@@ -46,7 +47,7 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         switch (viewType) {
-            case MultiViewModel.TYPE_BANNER:
+            case HomeGridModel.TYPE_BANNER:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.banner_image, parent, false);
                 final ViewGroup.LayoutParams lp = view.getLayoutParams();
                 if (lp instanceof GridLayoutManager.LayoutParams) {
@@ -57,7 +58,7 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter {
 
                 return new BannerTypeViewHolder(view);
 
-            case MultiViewModel.TYPE_IMAGE_WITH_TEXT:
+            case HomeGridModel.TYPE_IMAGE_WITH_TEXT:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.image_with_title, parent, false);
                 return new ImageTypeViewHolder(view);
 
@@ -69,15 +70,15 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
 
-        MultiViewModel object = dataSet.get(position);
+        HomeGridModel object = dataSet.get(position);
 
         if (object != null) {
             switch (object.type) {
-                case MultiViewModel.TYPE_BANNER:
+                case HomeGridModel.TYPE_BANNER:
                     ((BannerTypeViewHolder) holder).bannerImg.setBackgroundResource(R.drawable.banner);;
 
                     break;
-                case MultiViewModel.TYPE_IMAGE_WITH_TEXT:
+                case HomeGridModel.TYPE_IMAGE_WITH_TEXT:
                     ((ImageTypeViewHolder) holder).txtType.setText(object.text);
                     ((ImageTypeViewHolder) holder).image.setImageResource(object.data);
                     break;

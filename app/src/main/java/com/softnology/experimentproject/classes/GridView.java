@@ -7,20 +7,18 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.os.Bundle;
 
 import com.kingfisher.easyviewindicator.AnyViewIndicator;
-import com.kingfisher.easyviewindicator.GridLayoutSnapHelper;
 import com.softnology.experimentproject.R;
-import com.softnology.experimentproject.adapter.MultiViewTypeAdapter;
-import com.softnology.experimentproject.model.MultiViewModel;
+import com.softnology.experimentproject.adapter.HomeGridViewAdapter;
+import com.softnology.experimentproject.model.HomeGridModel;
 
 import java.util.ArrayList;
 
 public class GridView extends AppCompatActivity {
-    ArrayList<MultiViewModel> gridViewModelArrayList;
+    ArrayList<HomeGridModel> gridViewModelArrayList;
     String[] activity_names;
     int[] icons;
     RecyclerView mRecyclerView;
@@ -39,7 +37,7 @@ public class GridView extends AppCompatActivity {
 
         prepareData();
 
-        //MultiViewTypeAdapter adapter =
+        //HomeGridViewAdapter adapter =
         // LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
 
         mRecyclerView = findViewById(R.id.recyclerView);
@@ -55,7 +53,7 @@ public class GridView extends AppCompatActivity {
         // add pager behavior
         mRecyclerView.setLayoutManager(gl);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(new MultiViewTypeAdapter(this,gridViewModelArrayList));
+        mRecyclerView.setAdapter(new HomeGridViewAdapter(this,gridViewModelArrayList));
         PagerSnapHelper snapHelper = new PagerSnapHelper();
         snapHelper.attachToRecyclerView(mRecyclerView);
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -74,7 +72,7 @@ public class GridView extends AppCompatActivity {
 
     void prepareData()
     {
-        MultiViewModel gridViewModel=null;
+        HomeGridModel gridViewModel=null;
         for (int i=0;i<activity_names.length;i++)
         {
           /*  if (i==6)
@@ -85,7 +83,7 @@ public class GridView extends AppCompatActivity {
                 gridViewModelArrayList.add(gridViewModel);
             }
             else {*/
-                gridViewModel = new MultiViewModel(MultiViewModel.TYPE_IMAGE_WITH_TEXT, activity_names[i], icons[i]);
+                gridViewModel = new HomeGridModel(HomeGridModel.TYPE_IMAGE_WITH_TEXT, activity_names[i], icons[i]);
                 gridViewModelArrayList.add(gridViewModel);
             /*}*/
         }
