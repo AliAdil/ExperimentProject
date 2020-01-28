@@ -232,42 +232,42 @@ public class AsyncTaskExperiment extends AppCompatActivity {
     @Override
     protected void onStart() {
 
-        Toast.makeText(getApplicationContext(),"onStart "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"onStart "+AsyncTaskExperiment.class.getSimpleName(),Toast.LENGTH_LONG).show();
         super.onStart();
     }
 
     @Override
     protected void onRestart() {
 
-        Toast.makeText(getApplicationContext(),"onRestart "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"onRestart "+AsyncTaskExperiment.class.getSimpleName(),Toast.LENGTH_LONG).show();
         super.onRestart();
     }
 
     @Override
     protected void onResume() {
 
-        Toast.makeText(getApplicationContext(),"onResume "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"onResume "+AsyncTaskExperiment.class.getSimpleName(),Toast.LENGTH_LONG).show();
         super.onResume();
     }
 
     @Override
     protected void onPause() {
 
-        Toast.makeText(getApplicationContext(),"onPause "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"onPause "+AsyncTaskExperiment.class.getSimpleName(),Toast.LENGTH_LONG).show();
         super.onPause();
     }
 
     @Override
     protected void onStop() {
 
-        Toast.makeText(getApplicationContext(),"onStop "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"onStop "+AsyncTaskExperiment.class.getSimpleName(),Toast.LENGTH_LONG).show();
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
 
-        Toast.makeText(getApplicationContext(),"onDestroy "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"onDestroy "+AsyncTaskExperiment.class.getSimpleName(),Toast.LENGTH_LONG).show();
         super.onDestroy();
     }
 }

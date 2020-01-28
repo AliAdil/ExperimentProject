@@ -131,42 +131,42 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         setMySnackBar("onStart");
-        Toast.makeText(getApplicationContext(),"onStart "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"onStart "+MainActivity.class.getSimpleName(),Toast.LENGTH_LONG).show();
         super.onStart();
     }
 
     @Override
     protected void onRestart() {
         setMySnackBar("onRestart");
-        Toast.makeText(getApplicationContext(),"onRestart "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"onRestart "+MainActivity.class.getSimpleName(),Toast.LENGTH_LONG).show();
         super.onRestart();
     }
 
     @Override
     protected void onResume() {
         setMySnackBar("onResume");
-        Toast.makeText(getApplicationContext(),"onResume "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"onResume "+MainActivity.class.getSimpleName(),Toast.LENGTH_LONG).show();
         super.onResume();
     }
 
     @Override
     protected void onPause() {
         setMySnackBar("onPause");
-        Toast.makeText(getApplicationContext(),"onPause "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"onPause "+MainActivity.class.getSimpleName(),Toast.LENGTH_LONG).show();
         super.onPause();
     }
 
     @Override
     protected void onStop() {
         setMySnackBar("onStop");
-        Toast.makeText(getApplicationContext(),"onStop "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"onStop "+MainActivity.class.getSimpleName(),Toast.LENGTH_LONG).show();
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
         setMySnackBar("onDestroy");
-        Toast.makeText(getApplicationContext(),"onDestroy "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"onDestroy "+MainActivity.class.getSimpleName(),Toast.LENGTH_LONG).show();
         super.onDestroy();
     }
     /*  End of Activity Life Cycle State Methods*/
