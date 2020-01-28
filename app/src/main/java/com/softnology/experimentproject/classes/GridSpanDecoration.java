@@ -1,14 +1,11 @@
 package com.softnology.experimentproject.classes;
 
-import android.annotation.SuppressLint;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.view.View;
-
-import androidx.core.view.ViewCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.softnology.experimentproject.R;

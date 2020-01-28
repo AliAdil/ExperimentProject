@@ -31,7 +31,14 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
-        <activity android:name=".AsyncTaskExperiment" />
+        <activity android:name=".AsyncTaskExperiment"
+            android:parentActivityName=".MainActivity"
+            android:label="Second Activity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AsyncTaskExperiment"/>
+
+        </activity>
         <activity android:name=".classes.AppCompatPreferenceActivity" />
     </application>
 

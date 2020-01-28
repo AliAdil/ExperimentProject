@@ -1,6 +1,8 @@
 package com.softnology.experimentproject;
 
+
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -11,16 +13,14 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import org.w3c.dom.Text;
-
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
+
+import static com.softnology.experimentproject.MainActivity.EXTRA_MESSAGES;
 
 public class AsyncTaskExperiment extends AppCompatActivity {
 
@@ -46,8 +46,11 @@ public class AsyncTaskExperiment extends AppCompatActivity {
         textViewProgress = findViewById(R.id.TextView_Progress);
         progressBar = findViewById(R.id.Progressbar);
         Button showToast = findViewById(R.id.btn_showToast);
+        TextView textHeader = findViewById(R.id.text_header);
         progressBar.setProgress(0);
-
+        Intent intent = getIntent();
+        String message =  intent.getStringExtra(EXTRA_MESSAGES);
+        textHeader.setText(message);
         // Inflating view
         LayoutInflater inflater = getLayoutInflater();
         linearLayout = inflater.inflate(R.layout.custom_toast_layout,(ViewGroup)findViewById(R.id.custom_toast_container));
@@ -226,5 +229,45 @@ public class AsyncTaskExperiment extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void onStart() {
 
+        Toast.makeText(getApplicationContext(),"onStart "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
+        super.onStart();
+    }
+
+    @Override
+    protected void onRestart() {
+
+        Toast.makeText(getApplicationContext(),"onRestart "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
+        super.onRestart();
+    }
+
+    @Override
+    protected void onResume() {
+
+        Toast.makeText(getApplicationContext(),"onResume "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+
+        Toast.makeText(getApplicationContext(),"onPause "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+
+        Toast.makeText(getApplicationContext(),"onStop "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        Toast.makeText(getApplicationContext(),"onDestroy "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
+        super.onDestroy();
+    }
 }

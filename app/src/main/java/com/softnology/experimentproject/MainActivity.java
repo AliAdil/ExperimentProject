@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,19 +25,26 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.Toolbar;
 import androidx.print.PrintHelper;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
 import com.softnology.experimentproject.classes.GridView;
 
 import java.util.Objects;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 public class MainActivity extends AppCompatActivity {
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
+    public static final String EXTRA_MESSAGES = "com.example.android.twoactivities.extra.MESSAGE";
     private Animation fadeOut;
     private TextView textViewAsyncTask;
     private Snackbar mySnackBar;
     private Toast toast = null;
+    private AppCompatEditText edit_Message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnPrint = findViewById(R.id.btn_print);
         Button btnEmail = findViewById(R.id.btn_email);
         Button btnSettings = findViewById(R.id.btn_settings);
+        edit_Message = findViewById(R.id.edit_message);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         /* getLoaderManager().initLoader(1, null, new MyLoaderCallBack());*/
         Animation fadeIn = new AlphaAnimation(0, 1);
@@ -121,36 +131,42 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         setMySnackBar("onStart");
+        Toast.makeText(getApplicationContext(),"onStart "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
         super.onStart();
     }
 
     @Override
     protected void onRestart() {
         setMySnackBar("onRestart");
+        Toast.makeText(getApplicationContext(),"onRestart "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
         super.onRestart();
     }
 
     @Override
     protected void onResume() {
         setMySnackBar("onResume");
+        Toast.makeText(getApplicationContext(),"onResume "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
         super.onResume();
     }
 
     @Override
     protected void onPause() {
         setMySnackBar("onPause");
+        Toast.makeText(getApplicationContext(),"onPause "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
         super.onPause();
     }
 
     @Override
     protected void onStop() {
         setMySnackBar("onStop");
+        Toast.makeText(getApplicationContext(),"onStop "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
         setMySnackBar("onDestroy");
+        Toast.makeText(getApplicationContext(),"onDestroy "+MainActivity.class.getSimpleName(),Toast.LENGTH_SHORT).show();
         super.onDestroy();
     }
     /*  End of Activity Life Cycle State Methods*/
@@ -184,6 +200,14 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+    }
+
+    public void gotoNextActivity(View view) {
+        Log.d(LOG_TAG,"Button Clicked!");
+        Intent intent = new Intent(this,AsyncTaskExperiment.class);
+        String message = Objects.requireNonNull(edit_Message.getText()).toString();
+        intent.putExtra(EXTRA_MESSAGES,message);
+        startActivity(intent);
     }
 
     //Snack bar click listener

@@ -49,5 +49,7 @@
     <string name="key_notifications_new_message_ringtone" translatable="false">key_notifications_new_message_ringtone</string>
     <string name="key_vibrate" translatable="false">key_vibrate</string>
     <string name="key_send_feedback" translatable="false">key_send_feedback</string>
+    <string name="send">send</string>
+    <string name="message">Message</string>
 
 </resources>
